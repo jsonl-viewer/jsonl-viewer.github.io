@@ -1,0 +1,31 @@
+# JSONL Viewer
+
+> Free online JSONL viewer. Drop or paste a JSON Lines (.jsonl) file to browse every record in a clean table, search, expand nested fields and spot broken lines — all in your browser, nothing uploaded.
+
+URL: https://jsonl-viewer.github.io/
+Price: Free. Runs 100% in the browser — no upload, no sign-up.
+
+## Features
+- View each JSON Lines record in a clean, scannable list or table
+- Expand and collapse nested objects and arrays
+- Search and filter records by text
+- See the total record count and jump between records
+- Invalid lines are flagged with their line number and the parse error
+- 100% client-side — no upload, works offline, safe for private datasets
+
+## FAQ
+### What is a JSONL / JSON Lines file?
+JSONL is a text format where each line is a separate, complete JSON object. It's widely used for AI/ML datasets, fine-tuning files, and logs because records can be streamed and appended one line at a time.
+
+### Is my file uploaded anywhere?
+No. JSONL Viewer parses everything in your browser with JavaScript. Your data is never sent to a server, so it's safe for private or proprietary datasets.
+
+### How is JSONL different from a normal JSON file?
+A JSON file is one single value (often one big array). A JSONL file is many independent JSON objects, one per line, with no surrounding brackets or commas between them.
+
+### Can it handle large files?
+Yes, within your device's memory. Because each line is parsed independently, the viewer can show records and isolate broken lines even when the overall file isn't valid JSON.
+
+### What happens if a line is invalid?
+The viewer keeps going and flags the bad line with its line number and the specific JSON parse error, so you can find and fix it quickly.
+
