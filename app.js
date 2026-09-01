@@ -221,6 +221,10 @@
       records = [];
       blankCount = 0;
       var text = textarea.value || "";
+      // Strip a leading UTF-8 BOM. Files exported from Excel, PowerShell and most
+      // .NET tooling carry one, and it would otherwise make a perfectly valid first
+      // line fail to parse — the most misleading error this tool could give.
+      if (text.charCodeAt(0) === 0xFEFF) text = text.slice(1);
       var lines = text.split(/\r\n|\r|\n/);
       totalLines = lines.length;
       for (var i = 0; i < lines.length; i++) {
