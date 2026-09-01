@@ -3,29 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>JSONL Viewer — View &amp; Explore JSON Lines Files Online (Free)</title>
-  <meta name="description" content="Free online JSONL viewer. Drop or paste a JSON Lines (.jsonl) file to browse every record in a clean table, search, expand nested fields and spot broken lines — all in your browser, nothing uploaded.">
+  <title>JSONL Viewer &amp; Validator — Open and Check JSON Lines / NDJSON Online (Free)</title>
+  <meta name="description" content="Free online JSONL viewer and validator. Drop or paste a JSON Lines (.jsonl) or NDJSON file to browse every record in a readable list, search and expand nested fields, and check that every line is valid JSON — with exact line numbers. Runs entirely in your browser, nothing uploaded.">
   <link rel="canonical" href="https://jsonl-viewer.github.io/">
   <meta name="theme-color" content="#2563eb">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="generator" content="tool-factory">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2032%2032'%3E%3Crect%20width%3D'32'%20height%3D'32'%20rx%3D'6'%20fill%3D'%232563eb'%2F%3E%3Ctext%20x%3D'16'%20y%3D'22'%20font-size%3D'18'%20font-family%3D'sans-serif'%20fill%3D'white'%20text-anchor%3D'middle'%3EJSONL%20VIEWER%3C%2Ftext%3E%3C%2Fsvg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2032%2032'%3E%3Crect%20width%3D'32'%20height%3D'32'%20rx%3D'6'%20fill%3D'%232563eb'%2F%3E%3Ctext%20x%3D'16'%20y%3D'22'%20font-size%3D'18'%20font-family%3D'sans-serif'%20fill%3D'white'%20text-anchor%3D'middle'%3EJSONL%20VIEWER%20%26amp%3B%20VALIDATOR%3C%2Ftext%3E%3C%2Fsvg%3E">
   <!-- SEO: OpenGraph + Twitter + JSON-LD structured data -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jsonl-viewer.github.io/">
-  <meta property="og:title" content="JSONL Viewer — View &amp; Explore JSON Lines Files Online (Free)">
-  <meta property="og:description" content="Free online JSONL viewer. Drop or paste a JSON Lines (.jsonl) file to browse every record in a clean table, search, expand nested fields and spot broken lines — all in your browser, nothing uploaded.">
-  <meta property="og:site_name" content="JSONL Viewer">
+  <meta property="og:title" content="JSONL Viewer &amp; Validator — Open and Check JSON Lines / NDJSON Online (Free)">
+  <meta property="og:description" content="Free online JSONL viewer and validator. Drop or paste a JSON Lines (.jsonl) or NDJSON file to browse every record in a readable list, search and expand nested fields, and check that every line is valid JSON — with exact line numbers. Runs entirely in your browser, nothing uploaded.">
+  <meta property="og:site_name" content="JSONL Viewer &amp; Validator">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="JSONL Viewer — View &amp; Explore JSON Lines Files Online (Free)">
-  <meta name="twitter:description" content="Free online JSONL viewer. Drop or paste a JSON Lines (.jsonl) file to browse every record in a clean table, search, expand nested fields and spot broken lines — all in your browser, nothing uploaded.">
+  <meta name="twitter:title" content="JSONL Viewer &amp; Validator — Open and Check JSON Lines / NDJSON Online (Free)">
+  <meta name="twitter:description" content="Free online JSONL viewer and validator. Drop or paste a JSON Lines (.jsonl) or NDJSON file to browse every record in a readable list, search and expand nested fields, and check that every line is valid JSON — with exact line numbers. Runs entirely in your browser, nothing uploaded.">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "name": "JSONL Viewer",
+      "name": "JSONL Viewer & Validator",
       "url": "https://jsonl-viewer.github.io/",
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "Any (web browser)",
@@ -34,7 +34,7 @@
         "price": "0",
         "priceCurrency": "USD"
       },
-      "description": "Free online JSONL viewer. Drop or paste a JSON Lines (.jsonl) file to browse every record in a clean table, search, expand nested fields and spot broken lines — all in your browser, nothing uploaded.",
+      "description": "Free online JSONL viewer and validator. Drop or paste a JSON Lines (.jsonl) or NDJSON file to browse every record in a readable list, search and expand nested fields, and check that every line is valid JSON — with exact line numbers. Runs entirely in your browser, nothing uploaded.",
       "author": {
         "@type": "Organization",
         "name": "Tool Factory"
@@ -48,15 +48,15 @@
           "name": "What is a JSONL / JSON Lines file?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "JSONL is a text format where each line is a separate, complete JSON object. It's widely used for AI/ML datasets, fine-tuning files, and logs because records can be streamed and appended one line at a time."
+            "text": "JSONL is a text format where each line is a separate, complete JSON object. It's widely used for AI and ML datasets, fine-tuning files, and logs, because records can be streamed and appended one line at a time without rewriting the whole file."
           }
         },
         {
           "@type": "Question",
-          "name": "Is my file uploaded anywhere?",
+          "name": "Is NDJSON the same as JSONL?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. JSONL Viewer parses everything in your browser with JavaScript. Your data is never sent to a server, so it's safe for private or proprietary datasets."
+            "text": "In practice, yes. NDJSON (newline-delimited JSON) and JSON Lines both mean 'one complete JSON object per line'. This tool handles both, and .jsonl, .ndjson and .txt files all work the same way."
           }
         },
         {
@@ -64,15 +64,23 @@
           "name": "How is JSONL different from a normal JSON file?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A JSON file is one single value (often one big array). A JSONL file is many independent JSON objects, one per line, with no surrounding brackets or commas between them."
+            "text": "A JSON file is one single value, often one big array. A JSONL file is many independent JSON objects, one per line, with no surrounding brackets and no commas between records. That's why a standard JSON viewer refuses to open it."
           }
         },
         {
           "@type": "Question",
-          "name": "Can it handle large files?",
+          "name": "Is my file uploaded anywhere?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, within your device's memory. Because each line is parsed independently, the viewer can show records and isolate broken lines even when the overall file isn't valid JSON."
+            "text": "No. Everything is parsed in your browser with JavaScript. Your data never leaves your device, which makes it safe for proprietary training sets, private logs and customer data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why validate a JSONL file before uploading it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Training, fine-tuning and bulk-import pipelines parse JSONL line by line, and a single malformed line usually aborts the entire job. Checking first saves a failed — and sometimes billed — run."
           }
         },
         {
@@ -80,34 +88,58 @@
           "name": "What happens if a line is invalid?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The viewer keeps going and flags the bad line with its line number and the specific JSON parse error, so you can find and fix it quickly."
+            "text": "Nothing stops. Each line is parsed independently, so the tool keeps going and flags the bad line with its number and the specific JSON parse error. That works in both View and Validate mode, even when most of the file is broken."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the key-consistency check?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An optional check in Validate mode that compares each record's top-level keys against the first valid record and flags any that differ. It catches rows with missing or extra fields — lines that are valid JSON but still wrong for your schema."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can it handle large files?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, within your device's memory. Validation runs over the whole file, and the record list renders in capped batches so the page stays responsive on very large inputs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Once the page has loaded there are no network calls at all, so both viewing and validation keep working with no internet connection."
           }
         }
       ]
     },
     {
       "@type": "HowTo",
-      "name": "How to use JSONL Viewer",
+      "name": "How to use JSONL Viewer & Validator",
       "step": [
         {
           "@type": "HowToStep",
           "position": 1,
-          "text": "Drag and drop your .jsonl file onto the page, or paste JSON Lines text into the box."
+          "text": "Drag and drop your .jsonl or .ndjson file onto the page, or paste JSON Lines text into the box."
         },
         {
           "@type": "HowToStep",
           "position": 2,
-          "text": "Browse the parsed records; click any record to expand its nested fields."
+          "text": "Press View to browse the parsed records, then click any record to expand its nested fields, or use the search box to filter."
         },
         {
           "@type": "HowToStep",
           "position": 3,
-          "text": "Use the search box to filter to the records you care about."
+          "text": "Press Validate to check every line at once — you'll get a pass/fail banner, counts, and a list of any broken lines with their line numbers."
         },
         {
           "@type": "HowToStep",
           "position": 4,
-          "text": "Check the summary for any invalid lines, with the exact line number and error."
+          "text": "Fix the flagged lines in your source file and validate again, or export the valid records as a JSON array."
         }
       ]
     }
@@ -123,19 +155,19 @@
   <main class="wrap">
     <header class="hero">
       <span class="logo-mark" aria-hidden="true"></span>
-      <h1>Free Online JSONL Viewer</h1>
-      <p class="tagline">Open and explore JSON Lines files instantly — record by record, right in your browser.</p>
+      <h1>Free Online JSONL Viewer &amp; Validator</h1>
+      <p class="tagline">Open, search and validate JSON Lines and NDJSON files instantly — record by record, right in your browser.</p>
       <p class="trust">Free · No sign-up · Runs entirely in your browser</p>
     </header>
 
     <!-- THE TOOL — the hero of the page. app.js renders its UI into #tool. -->
     <section class="tool-zone">
       <p class="tool-cue" aria-hidden="true">↓ Enter your details below to start</p>
-      <section id="tool" class="tool" data-keyword="jsonl-viewer" aria-label="JSONL Viewer">
+      <section id="tool" class="tool" data-keyword="jsonl-viewer" aria-label="JSONL Viewer &amp; Validator">
         <noscript>
           <p class="notice">This tool runs entirely in your browser and needs JavaScript enabled.</p>
         </noscript>
-        <p class="tool-loading">Loading JSONL Viewer…</p>
+        <p class="tool-loading">Loading JSONL Viewer &amp; Validator…</p>
       </section>
     </section>
 
@@ -146,21 +178,24 @@
       <section class="howto" aria-label="How to use">
         <h2>How to use</h2>
         <ol class="howto-steps">
-        <li>Drag and drop your .jsonl file onto the page, or paste JSON Lines text into the box.</li>
-        <li>Browse the parsed records; click any record to expand its nested fields.</li>
-        <li>Use the search box to filter to the records you care about.</li>
-        <li>Check the summary for any invalid lines, with the exact line number and error.</li>
+        <li>Drag and drop your .jsonl or .ndjson file onto the page, or paste JSON Lines text into the box.</li>
+        <li>Press View to browse the parsed records, then click any record to expand its nested fields, or use the search box to filter.</li>
+        <li>Press Validate to check every line at once — you&#39;ll get a pass/fail banner, counts, and a list of any broken lines with their line numbers.</li>
+        <li>Fix the flagged lines in your source file and validate again, or export the valid records as a JSON array.</li>
         </ol>
       </section>
 
       <section class="features" aria-label="Features">
         <h2>Features</h2>
         <ul class="feature-list">
-        <li>View each JSON Lines record in a clean, scannable list or table</li>
-        <li>Expand and collapse nested objects and arrays</li>
-        <li>Search and filter records by text</li>
-        <li>See the total record count and jump between records</li>
-        <li>Invalid lines are flagged with their line number and the parse error</li>
+        <li>Two modes over one input — View to browse records, Validate to check every line</li>
+        <li>Handles .jsonl, .ndjson and .txt — JSON Lines and NDJSON are the same format</li>
+        <li>Expand and collapse nested objects and arrays record by record</li>
+        <li>Live search and filter across every record</li>
+        <li>Invalid lines flagged with their exact line number and the JSON parse error</li>
+        <li>Counts for valid, invalid and blank lines, and a jump to the first error</li>
+        <li>Optional key-consistency check that flags records with unexpected fields</li>
+        <li>Export valid records as a JSON array, or download a plain-text validation report</li>
         <li>100% client-side — no upload, works offline, safe for private datasets</li>
         </ul>
       </section>
@@ -169,37 +204,54 @@
         <h2>FAQ</h2>
       <details>
         <summary>What is a JSONL / JSON Lines file?</summary>
-        <p>JSONL is a text format where each line is a separate, complete JSON object. It&#39;s widely used for AI/ML datasets, fine-tuning files, and logs because records can be streamed and appended one line at a time.</p>
+        <p>JSONL is a text format where each line is a separate, complete JSON object. It&#39;s widely used for AI and ML datasets, fine-tuning files, and logs, because records can be streamed and appended one line at a time without rewriting the whole file.</p>
       </details>
       <details>
-        <summary>Is my file uploaded anywhere?</summary>
-        <p>No. JSONL Viewer parses everything in your browser with JavaScript. Your data is never sent to a server, so it&#39;s safe for private or proprietary datasets.</p>
+        <summary>Is NDJSON the same as JSONL?</summary>
+        <p>In practice, yes. NDJSON (newline-delimited JSON) and JSON Lines both mean &#39;one complete JSON object per line&#39;. This tool handles both, and .jsonl, .ndjson and .txt files all work the same way.</p>
       </details>
       <details>
         <summary>How is JSONL different from a normal JSON file?</summary>
-        <p>A JSON file is one single value (often one big array). A JSONL file is many independent JSON objects, one per line, with no surrounding brackets or commas between them.</p>
+        <p>A JSON file is one single value, often one big array. A JSONL file is many independent JSON objects, one per line, with no surrounding brackets and no commas between records. That&#39;s why a standard JSON viewer refuses to open it.</p>
       </details>
       <details>
-        <summary>Can it handle large files?</summary>
-        <p>Yes, within your device&#39;s memory. Because each line is parsed independently, the viewer can show records and isolate broken lines even when the overall file isn&#39;t valid JSON.</p>
+        <summary>Is my file uploaded anywhere?</summary>
+        <p>No. Everything is parsed in your browser with JavaScript. Your data never leaves your device, which makes it safe for proprietary training sets, private logs and customer data.</p>
+      </details>
+      <details>
+        <summary>Why validate a JSONL file before uploading it?</summary>
+        <p>Training, fine-tuning and bulk-import pipelines parse JSONL line by line, and a single malformed line usually aborts the entire job. Checking first saves a failed — and sometimes billed — run.</p>
       </details>
       <details>
         <summary>What happens if a line is invalid?</summary>
-        <p>The viewer keeps going and flags the bad line with its line number and the specific JSON parse error, so you can find and fix it quickly.</p>
+        <p>Nothing stops. Each line is parsed independently, so the tool keeps going and flags the bad line with its number and the specific JSON parse error. That works in both View and Validate mode, even when most of the file is broken.</p>
+      </details>
+      <details>
+        <summary>What is the key-consistency check?</summary>
+        <p>An optional check in Validate mode that compares each record&#39;s top-level keys against the first valid record and flags any that differ. It catches rows with missing or extra fields — lines that are valid JSON but still wrong for your schema.</p>
+      </details>
+      <details>
+        <summary>Can it handle large files?</summary>
+        <p>Yes, within your device&#39;s memory. Validation runs over the whole file, and the record list renders in capped batches so the page stays responsive on very large inputs.</p>
+      </details>
+      <details>
+        <summary>Does it work offline?</summary>
+        <p>Yes. Once the page has loaded there are no network calls at all, so both viewing and validation keep working with no internet connection.</p>
       </details>
       </section>
 
       <section class="about" aria-label="About">
-      <p>JSONL (JSON Lines) stores one JSON object per line. It&#39;s the standard format for AI training and fine-tuning datasets, LLM chat logs, and data pipelines — but most editors choke on it because the whole file isn&#39;t valid JSON.</p>
-      <p>JSONL Viewer parses each line on its own, shows your records in a readable table, and flags any broken lines. Everything runs locally in your browser, so even large or sensitive datasets never leave your device.</p>
-        <p class="privacy-note">🔒 JSONL Viewer runs 100% in your browser — nothing is uploaded.</p>
+      <p>JSONL (JSON Lines) stores one JSON object per line. It&#39;s the standard format for AI training and fine-tuning datasets, LLM chat logs, streaming APIs and log pipelines — but most editors choke on it, because the file as a whole isn&#39;t valid JSON. NDJSON (newline-delimited JSON) is the same format under a different name, and both work here.</p>
+      <p>This tool does the two things you actually need with a JSONL file, in one place. &lt;strong&gt;View&lt;/strong&gt; parses each line on its own and lays your records out in a searchable, expandable list. &lt;strong&gt;Validate&lt;/strong&gt; checks every line and tells you exactly which ones are broken, with line numbers and the parser&#39;s own error message — plus an optional check for records whose keys don&#39;t match the rest.</p>
+      <p>Everything runs locally in your browser. Your data is never uploaded, so even large or confidential datasets stay on your device.</p>
+        <p class="privacy-note">🔒 JSONL Viewer &amp; Validator runs 100% in your browser — nothing is uploaded.</p>
       </section>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="wrap">
-      <p>&copy; 2026 JSONL Viewer · Built by Tool Factory</p>
+      <p>&copy; 2026 JSONL Viewer &amp; Validator · Built by Tool Factory</p>
     </div>
   </footer>
 

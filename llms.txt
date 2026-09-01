@@ -1,31 +1,46 @@
-# JSONL Viewer
+# JSONL Viewer & Validator
 
-> Free online JSONL viewer. Drop or paste a JSON Lines (.jsonl) file to browse every record in a clean table, search, expand nested fields and spot broken lines — all in your browser, nothing uploaded.
+> Free online JSONL viewer and validator. Drop or paste a JSON Lines (.jsonl) or NDJSON file to browse every record in a readable list, search and expand nested fields, and check that every line is valid JSON — with exact line numbers. Runs entirely in your browser, nothing uploaded.
 
 URL: https://jsonl-viewer.github.io/
 Price: Free. Runs 100% in the browser — no upload, no sign-up.
 
 ## Features
-- View each JSON Lines record in a clean, scannable list or table
-- Expand and collapse nested objects and arrays
-- Search and filter records by text
-- See the total record count and jump between records
-- Invalid lines are flagged with their line number and the parse error
+- Two modes over one input — View to browse records, Validate to check every line
+- Handles .jsonl, .ndjson and .txt — JSON Lines and NDJSON are the same format
+- Expand and collapse nested objects and arrays record by record
+- Live search and filter across every record
+- Invalid lines flagged with their exact line number and the JSON parse error
+- Counts for valid, invalid and blank lines, and a jump to the first error
+- Optional key-consistency check that flags records with unexpected fields
+- Export valid records as a JSON array, or download a plain-text validation report
 - 100% client-side — no upload, works offline, safe for private datasets
 
 ## FAQ
 ### What is a JSONL / JSON Lines file?
-JSONL is a text format where each line is a separate, complete JSON object. It's widely used for AI/ML datasets, fine-tuning files, and logs because records can be streamed and appended one line at a time.
+JSONL is a text format where each line is a separate, complete JSON object. It's widely used for AI and ML datasets, fine-tuning files, and logs, because records can be streamed and appended one line at a time without rewriting the whole file.
 
-### Is my file uploaded anywhere?
-No. JSONL Viewer parses everything in your browser with JavaScript. Your data is never sent to a server, so it's safe for private or proprietary datasets.
+### Is NDJSON the same as JSONL?
+In practice, yes. NDJSON (newline-delimited JSON) and JSON Lines both mean 'one complete JSON object per line'. This tool handles both, and .jsonl, .ndjson and .txt files all work the same way.
 
 ### How is JSONL different from a normal JSON file?
-A JSON file is one single value (often one big array). A JSONL file is many independent JSON objects, one per line, with no surrounding brackets or commas between them.
+A JSON file is one single value, often one big array. A JSONL file is many independent JSON objects, one per line, with no surrounding brackets and no commas between records. That's why a standard JSON viewer refuses to open it.
 
-### Can it handle large files?
-Yes, within your device's memory. Because each line is parsed independently, the viewer can show records and isolate broken lines even when the overall file isn't valid JSON.
+### Is my file uploaded anywhere?
+No. Everything is parsed in your browser with JavaScript. Your data never leaves your device, which makes it safe for proprietary training sets, private logs and customer data.
+
+### Why validate a JSONL file before uploading it?
+Training, fine-tuning and bulk-import pipelines parse JSONL line by line, and a single malformed line usually aborts the entire job. Checking first saves a failed — and sometimes billed — run.
 
 ### What happens if a line is invalid?
-The viewer keeps going and flags the bad line with its line number and the specific JSON parse error, so you can find and fix it quickly.
+Nothing stops. Each line is parsed independently, so the tool keeps going and flags the bad line with its number and the specific JSON parse error. That works in both View and Validate mode, even when most of the file is broken.
+
+### What is the key-consistency check?
+An optional check in Validate mode that compares each record's top-level keys against the first valid record and flags any that differ. It catches rows with missing or extra fields — lines that are valid JSON but still wrong for your schema.
+
+### Can it handle large files?
+Yes, within your device's memory. Validation runs over the whole file, and the record list renders in capped batches so the page stays responsive on very large inputs.
+
+### Does it work offline?
+Yes. Once the page has loaded there are no network calls at all, so both viewing and validation keep working with no internet connection.
 
